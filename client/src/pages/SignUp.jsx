@@ -18,8 +18,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch('/api/auth/signup',
-      {
+      const res = await fetch('/api/auth/signup',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,8 +27,8 @@ export default function SignUp() {
       });
       const data = await res.json();
       if(data.success === false){
-        setError(data.message);
         setLoading(false);
+        setError(data.message);
         return;
       }
       setLoading(false);
